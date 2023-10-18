@@ -62,7 +62,7 @@ function Todo({ val, handleDelete, id, todos, setTodos, index }) {
         <div
           ref={(node) => ref(drop(node))}
           style={{ opacity: isDragging ? 0.5 : 1 }}
-          className={`bg-white || py-4 || px-4 || text-[#555] || rounded-md || border-l-4 || border-transparent || hover:border-[black] || duration-300 || cursor-pointer  select${id}`}
+          className={`bg-white || border-gray-300 || border || py-4 || px-4 || text-[#555] || rounded-md || border-l-4  || hover:border-[black] || duration-300 || cursor-pointer  select${id}`}
         >
           <div className="flex || justify-between ">
             <div className="flex || items-center || gap-1">

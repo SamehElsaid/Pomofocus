@@ -12,12 +12,11 @@ body {
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 .container {
-  @apply px-[5px] lg:px-[30px] max-w-5xl;
+  @apply px-[5px] lg:px-[30px] max-w-2xl;
 }
 
 .bgMain {
   opacity: 0.9;
-  background: none rgba(255, 255, 255, 0.2);
   padding: 8px 12px;
   color: white !important;
   @apply rounded-md;

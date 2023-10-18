@@ -5,7 +5,6 @@ import { TransitionGroup } from "react-transition-group";
 import Form from "./Form";
 import { FiMoreVertical } from "react-icons/fi";
 import CountdownTimer from "./CountdownTimer";
-import { VscGraph } from "react-icons/vsc";
 import { IoIosNuclear } from "react-icons/io";
 import { BsCheckLg } from "react-icons/bs";
 import { LiaSaveSolid } from "react-icons/lia";
@@ -143,161 +142,189 @@ function TodoContainer() {
       ></PopUp>
       <div
         className={`
-          ${step === "one" ? "bg-[#ba4949]" : ""}
-          ${step === "two" ? "bg-[#39858b]" : ""}
-          ${step === "thi" ? "bg-[#397196]" : ""}
-          App || transition-colors || duration-300  || text-white  || ${
+        bg-[#2b687f]
+          App || transition-colors || duration-300  || ${
             !task ? "" : ""
-          } ||  min-h-screen pb-[40px] || overflow-hidden`}
+          } ||  min-h-screen py-[40px] || overflow-hidden`}
       >
-        <div className="container">
-          <div className="flex || relative || overflow-x-hidden || items-center || justify-between || pt-10 || pb-5 || mb-5 || border-b || border-[#0000001a] ">
-            <div
-              style={{ transform: `translateX(-${100 - per}%)` }}
-              className="h-[2px] || transition-X || absolute || w-full || bg-white || bottom-0"
-            ></div>
-            <h2 className="text-2xl">Pomofocus</h2>
-            <div className="">
-              <ul className="flex || items-center || gap-3">
-                <li className="flex || items-center || gap-1 bgMain || select-none || cursor-pointer">
-                  <p>
-                    <VscGraph />
-                  </p>
-                  <p>Report</p>
-                </li>
-                <li
-                  onClick={() => setSeting(true)}
-                  className="flex || items-center || gap-1 bgMain || select-none || cursor-pointer"
-                >
-                  <p>
-                    <AiOutlineSetting />
-                  </p>
-                  <p>Setting</p>
-                </li>
-              </ul>
-            </div>
+        <div className="w-fit || mx-auto || rounded-3xl || overflow-hidden || shadow-2xl">
+          <div className="max-w-2xl || mx-auto">
+            <img
+              src="./assents/img/vida.png"
+              className="w-full || object-cover"
+              alt=""
+            />
           </div>
-          <div className="max-w-full md:max-w-[424px] mx-auto">
-            <div className="bgMain">
-              <CountdownTimer
-                referch={referch}
-                setReferch={setReferch}
-                step={step}
-                setStep={setStep}
-                setPer={setPer}
-              />
-            </div>
-            <div className="mx-auto">
-              <h2 className="text-center || text-lg || mt-5">Time to focus!</h2>
-              <div className="flex || items-center || justify-between || text-xl || pb-3 || border-b-2 border-[#ffffff99]">
-                <span>Tasks</span>
-                <div
-                  ref={perantOFAccount}
-                  onClick={() => {
-                    setShowMenu(!showMenu);
-                  }}
-                  className="bg-white/30 || relative duration-300 || hover:bg-white/40 || rounded-md || cursor-pointer || w-[35px] || h-[35px] || flex || justify-center || items-center"
-                >
-                  <FiMoreVertical />
-                  <Zoom
-                    appear
-                    center
-                    duration={300}
-                    opposite
-                    collapse
-                    when={showMenu}
+          <div className="container || bg-white || pb-10">
+            <div className="flex || relative || overflow-x-hidden || items-center || justify-between || pt-10 || pb-5 || mb-5 || border-b || border-[#0000001a] ">
+              <div
+                style={{ transform: `translateX(-${100 - per}%)` }}
+                className="h-[2px] || transition-X || absolute || w-full || bg-black || bottom-0"
+              ></div>
+              <div className="w-full">
+                <ul className="flex || items-center || justify-between || gap-3">
+                  <a
+                    href="http://Vidaworkstation.com"
+                    className={`flex || items-center || gap-1 bgMain || bg-[#2b687f]/80 || select-none || cursor-pointer`}
                   >
-                    <div className="absolute || text-[#555] || text-sm || min-w-[220px] || bg-white || rounded-md || top-[calc(100%+20px)] || right-0 || shadow-lg || z-10">
-                      <button
-                        onClick={() => {
-                          const newData = todos.filter(
-                            (ele) => ele.est !== ele.done
-                          );
-                          setTodos(newData);
-                        }}
-                        className="flex || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
-                      >
-                        <AiOutlineDelete />
-                        <span>Clear finished tasks</span>
-                      </button>
-                      <button
-                        onClick={() => {
-                          const newData = todos.map((item) => ({
-                            ...item,
-                            done: 0,
-                          }));
-
-                          setTodos(newData);
-                        }}
-                        className="flex || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
-                      >
-                        <BsCheckLg />
-                        <span>Clear act pomodoros</span>
-                      </button>
-                      <button
-                        onClick={() => {
-                          localStorage.setItem("todos", JSON.stringify(todos));
-                        }}
-                        className="flex || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
-                      >
-                        <LiaSaveSolid />
-                        <span>Save takes</span>
-                      </button>
-                      <button
-                        onClick={() => {
-                          localStorage.removeItem("todos");
-                        }}
-                        className="flex || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
-                      >
-                        <IoIosNuclear />
-                        <span>Clear saved takes</span>
-                      </button>
-                      <button
-                        onClick={() => {
-                          setTodos([]);
-                        }}
-                        className="flex || border-t || border-gray-200 || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
-                      >
-                        <AiOutlineDelete />
-                        <span>Clear all takes</span>
-                      </button>
-                    </div>
-                  </Zoom>
-                </div>
+                    <p>
+                      <AiOutlineSetting />
+                    </p>
+                    <p>Home</p>
+                  </a>
+                  <li
+                    onClick={() => setSeting(true)}
+                    className={`flex || items-center || gap-1 bgMain || bg-[#2b687f]/80 || select-none || cursor-pointer`}
+                  >
+                    <p>
+                      <AiOutlineSetting />
+                    </p>
+                    <p>Setting</p>
+                  </li>
+                </ul>
               </div>
-              <TransitionGroup>
-                <DndProvider backend={HTML5Backend}>
-                  <div className="my-3 || mt-9 || flex || flex-col || gap-3">
-                    {renderTodos()}
+            </div>
+            <div className="max-w-full md:max-w-[424px] mx-auto">
+              <div className={`bgMain  bg-[#2b687f]/80`}>
+                <CountdownTimer
+                  referch={referch}
+                  setReferch={setReferch}
+                  step={step}
+                  setStep={setStep}
+                  setPer={setPer}
+                />
+              </div>
+              <div className="mx-auto">
+                <h2 className="text-center || text-lg || mt-5">
+                  Time to focus!
+                </h2>
+                <div className="flex || items-center || justify-between || text-xl || pb-3 || border-b-2 border-gray-200">
+                  <span>Tasks</span>
+                  <div
+                    ref={perantOFAccount}
+                    onClick={() => {
+                      setShowMenu(!showMenu);
+                    }}
+                    className="bg-black/30 || text-white || relative duration-300 || hover:bg-black/40 || rounded-md || cursor-pointer || w-[35px] || h-[35px] || flex || justify-center || items-center"
+                  >
+                    <FiMoreVertical />
+                    <Zoom
+                      appear
+                      center
+                      duration={300}
+                      opposite
+                      collapse
+                      when={showMenu}
+                    >
+                      <div className="absolute || text-[#555] || text-sm || min-w-[220px] || bg-white || rounded-md || top-[calc(100%+20px)] || right-0 || shadow-lg || z-10">
+                        <button
+                          onClick={() => {
+                            const newData = todos.filter(
+                              (ele) => ele.est !== ele.done
+                            );
+                            setTodos(newData);
+                          }}
+                          className="flex || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
+                        >
+                          <AiOutlineDelete />
+                          <span>Clear finished tasks</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            const newData = todos.map((item) => ({
+                              ...item,
+                              done: 0,
+                            }));
+
+                            setTodos(newData);
+                          }}
+                          className="flex || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
+                        >
+                          <BsCheckLg />
+                          <span>Clear act pomodoros</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            localStorage.setItem(
+                              "todos",
+                              JSON.stringify(todos)
+                            );
+                          }}
+                          className="flex || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
+                        >
+                          <LiaSaveSolid />
+                          <span>Save takes</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            localStorage.removeItem("todos");
+                          }}
+                          className="flex || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
+                        >
+                          <IoIosNuclear />
+                          <span>Clear saved takes</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            setTodos([]);
+                          }}
+                          className="flex || border-t || border-gray-200 || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
+                        >
+                          <AiOutlineDelete />
+                          <span>Clear all takes</span>
+                        </button>
+                      </div>
+                    </Zoom>
                   </div>
-                </DndProvider>
-              </TransitionGroup>
-              <Zoom appear center duration={300} opposite collapse when={!task}>
-                <button
-                  onClick={() => {
-                    setTask(true);
-                  }}
-                  className="taskbtb  || py-5 || gap-1"
-                >
-                  <span>
-                    <AiFillPlusCircle className="text-2xl" />
-                  </span>
-                  <span> Add Task</span>
-                </button>
-              </Zoom>
-              <Zoom appear center duration={500} opposite collapse when={task}>
-                <div className="mainAddTask">
-                  <Form
-                    setTodo={setTodo}
-                    val={todo}
-                    handleSubmit={handleSubmit}
-                    handleInput={handleInput}
-                    handleCancel={handleCancel}
-                    openText={openText}
-                    setOpenText={setOpenText}
-                  />
                 </div>
-              </Zoom>
+                <TransitionGroup>
+                  <DndProvider backend={HTML5Backend}>
+                    <div className="my-3 || mt-9 || flex || flex-col || gap-3">
+                      {renderTodos()}
+                    </div>
+                  </DndProvider>
+                </TransitionGroup>
+                <Zoom
+                  appear
+                  center
+                  duration={300}
+                  opposite
+                  collapse
+                  when={!task}
+                >
+                  <button
+                    onClick={() => {
+                      setTask(true);
+                    }}
+                    className="taskbtb  || py-5 || gap-1"
+                  >
+                    <span>
+                      <AiFillPlusCircle className="text-2xl" />
+                    </span>
+                    <span> Add Task</span>
+                  </button>
+                </Zoom>
+                <Zoom
+                  appear
+                  center
+                  duration={500}
+                  opposite
+                  collapse
+                  when={task}
+                >
+                  <div className="mainAddTask">
+                    <Form
+                      setTodo={setTodo}
+                      val={todo}
+                      handleSubmit={handleSubmit}
+                      handleInput={handleInput}
+                      handleCancel={handleCancel}
+                      openText={openText}
+                      setOpenText={setOpenText}
+                    />
+                  </div>
+                </Zoom>
+              </div>
             </div>
           </div>
         </div>
