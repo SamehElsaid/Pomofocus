@@ -75,12 +75,6 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
     }
 
     if (time === 0) {
-      if (Notification.permission === "granted") {
-        new Notification("Countdown Timer", {
-          body: "The timer has finished!",
-          tag: "Timer",
-        });
-      }
       if (audioRef.current) {
         if (audioRef.current) {
           audioRef.current.play().catch((error) => {});
@@ -98,16 +92,9 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
       tickingSoundRef.current.currentTime = 0;
     }
   }, [playTickingSound]);
-  const requestNotificationPermission = () => {
-    Notification.requestPermission().then((permission) => {
-      if (permission === "granted") {
-        console.log("Notification permission granted.");
-      }
-    });
-  };
+
   const startTimer = () => {
     setIsRunning(true);
-    requestNotificationPermission();
     setPlayTickingSound(true);
   };
   const pauseTimer = () => {

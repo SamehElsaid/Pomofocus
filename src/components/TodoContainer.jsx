@@ -147,7 +147,7 @@ function TodoContainer() {
             !task ? "" : ""
           } ||  min-h-screen py-[40px] || overflow-hidden`}
       >
-        <div className="w-fit || mx-auto || rounded-3xl || overflow-hidden || shadow-2xl">
+        <div className="w-fit || mx-auto || rounded-3xl || min-h-screen || bg-white || overflow-hidden || shadow-2xl">
           <div className="max-w-2xl || mx-auto">
             <img
               src="./assents/img/vida.png"
@@ -155,7 +155,7 @@ function TodoContainer() {
               alt=""
             />
           </div>
-          <div className="container || bg-white || pb-10">
+          <div className="container || bg-white  || pb-28">
             <div className="flex || relative || overflow-x-hidden || items-center || justify-between || pt-10 || pb-5 || mb-5 || border-b || border-[#0000001a] ">
               <div
                 style={{ transform: `translateX(-${100 - per}%)` }}
@@ -185,7 +185,7 @@ function TodoContainer() {
               </div>
             </div>
             <div className="max-w-full md:max-w-[424px] mx-auto">
-              {/* <div className={`bgMain  bg-[#2b687f]/80`}>
+              <div className={`bgMain  bg-[#2b687f]/80`}>
                 <CountdownTimer
                   referch={referch}
                   setReferch={setReferch}
@@ -193,7 +193,7 @@ function TodoContainer() {
                   setStep={setStep}
                   setPer={setPer}
                 />
-              </div> */}
+              </div>
               <div className="mx-auto">
                 <h2 className="text-center || text-lg || mt-5">
                   Time to focus!
