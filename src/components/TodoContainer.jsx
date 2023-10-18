@@ -185,7 +185,7 @@ function TodoContainer() {
               </div>
             </div>
             <div className="max-w-full md:max-w-[424px] mx-auto">
-              <div className={`bgMain  bg-[#2b687f]/80`}>
+              {/* <div className={`bgMain  bg-[#2b687f]/80`}>
                 <CountdownTimer
                   referch={referch}
                   setReferch={setReferch}
@@ -193,7 +193,7 @@ function TodoContainer() {
                   setStep={setStep}
                   setPer={setPer}
                 />
-              </div>
+              </div> */}
               <div className="mx-auto">
                 <h2 className="text-center || text-lg || mt-5">
                   Time to focus!

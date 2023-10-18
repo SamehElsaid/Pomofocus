@@ -4,9 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <>
-      <div className="h-screen bg-red-300">test</div>
-      {/* <ToastContainer />
-      <TodoContainer /> */}
+      <ToastContainer />
+      <TodoContainer />
     </>
   );
 }
