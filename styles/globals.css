@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,23 +34,31 @@ body {
   margin: 20px 0px 0px;
   padding: 0px 12px;
   border-radius: 4px;
-  box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+  -webkit-box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+          box-shadow: rgb(235, 235, 235) 0px 6px 0px;
   font-size: 22px;
   height: 55px;
   color: rgb(186, 73, 73);
   font-weight: bold;
   width: 200px;
   background-color: white;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
 .btn:hover {
   background: rgb(186, 73, 73);
-  box-shadow: rgba(186, 73, 73, 0.566) 0px 6px 0px;
+  -webkit-box-shadow: rgba(186, 73, 73, 0.566) 0px 6px 0px;
+          box-shadow: rgba(186, 73, 73, 0.566) 0px 6px 0px;
   color: white;
 }
 
 .transition-X {
+  -webkit-transition: -webkit-transform 0.1s ease-in;
+  transition: -webkit-transform 0.1s ease-in;
+  -o-transition: transform 0.1s ease-in;
   transition: transform 0.1s ease-in;
+  transition: transform 0.1s ease-in, -webkit-transform 0.1s ease-in;
 }
 .btnTime {
   cursor: pointer;
@@ -59,13 +74,21 @@ body {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
   opacity: 0.8;
   margin-top: 12px;
   border: 2px dashed rgba(255, 255, 255, 0.4);
+  -webkit-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear;
 }
 .taskbtb:hover {
@@ -75,7 +98,8 @@ body {
   background-color: white;
   border-radius: 8px;
   text-align: left;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.1) 0px 3px 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.1) 0px 3px 6px;
+          box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.1) 0px 3px 6px;
 }
 .footerTask {
   padding: 14px 20px;
@@ -83,13 +107,23 @@ body {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   background-color: rgb(239, 239, 239);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: right;
-  align-items: center;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .taksBtn {
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
   border-radius: 4px;
   cursor: pointer;
@@ -102,7 +136,8 @@ body {
   display: inline-block;
 }
 .saveBtn {
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
 
   background-color: rgb(34, 34, 34);
   border: 2px solid rgb(34, 34, 34);
@@ -114,11 +149,13 @@ body {
 .inputStyle {
   border-radius: 4px;
   padding: 10px 0px;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border: none;
   color: rgb(85, 85, 85);
   width: 100%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-weight: bold;
   @apply md:text-[22px];
 }
@@ -127,11 +164,13 @@ body {
   background-color: rgb(239, 239, 239);
   font-size: 16px;
   padding: 10px;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border: none;
   color: rgb(85, 85, 85);
   width: 75px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin-right: 10px;
   font-weight: bold;
 }
@@ -144,7 +183,10 @@ body {
   background-color: white;
   color: rgb(85, 85, 85);
   border: 1px solid rgb(223, 223, 223);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+  -webkit-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear;
   @apply flex items-center justify-center;
 }
@@ -158,6 +200,8 @@ body {
   opacity: 0.9;
   color: rgba(0, 0, 0, 0.4);
   letter-spacing: 0.02em;
+  -webkit-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear;
   text-decoration: underline;
   padding: 10px 0;
@@ -172,7 +216,8 @@ body {
   padding: 10px 14px;
   color: rgb(85, 85, 85);
   width: 100%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 15px;
   line-height: 1.4em;
 }
@@ -185,7 +230,8 @@ body {
   padding: 10px 12px;
   word-break: break-word;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px;
   background-color: rgb(252, 248, 222);
 }
 .kZXCiQ {
@@ -197,11 +243,17 @@ body {
   height: 100vh;
   z-index: 30;
   pointer-events: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  justify-content: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   -webkit-box-align: center;
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -webkit-transition: all 0.2s ease-in 0s;
+  -o-transition: all 0.2s ease-in 0s;
   transition: all 0.2s ease-in 0s;
   overflow: auto;
   padding: 48px 0px 58px;
@@ -217,9 +269,14 @@ body {
   border-top: 1px solid rgb(239, 239, 239);
   border-bottom: 1px solid rgb(239, 239, 239);
   margin: auto;
+  -webkit-transition: all 0.2s ease-in 0s;
+  -o-transition: all 0.2s ease-in 0s;
   transition: all 0.2s ease-in 0s;
-  transform: translateY(20px);
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.1) 0px 3px 6px;
+  -webkit-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+          transform: translateY(20px);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.1) 0px 3px 6px;
+          box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.1) 0px 3px 6px;
   overflow: hidden;
   display: block;
 }
