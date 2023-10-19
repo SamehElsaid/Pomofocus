@@ -142,7 +142,7 @@ function TodoContainer() {
       ></PopUp>
       <div
         className={`
-        bg-[#285566]
+        bg-[#105F7A]
           App || transition-colors || duration-300  || ${
             !task ? "" : ""
           } ||  min-h-screen py-[15px] || overflow-hidden`}
@@ -165,7 +165,7 @@ function TodoContainer() {
                 <ul className="flex || items-center || justify-between || gap-3">
                   <a
                     href="http://Vidaworkstation.com"
-                    className={`flex || items-center || gap-1 bgMain || bg-[#285566] || select-none || cursor-pointer`}
+                    className={`flex || items-center || gap-1 bgMain || bg-[#105F7A] || select-none || cursor-pointer`}
                   >
                     <p>
                       <AiOutlineSetting />
@@ -174,7 +174,7 @@ function TodoContainer() {
                   </a>
                   <li
                     onClick={() => setSeting(true)}
-                    className={`flex || items-center || gap-1 bgMain || bg-[#285566] || select-none || cursor-pointer`}
+                    className={`flex || items-center || gap-1 bgMain || bg-[#105F7A] || select-none || cursor-pointer`}
                   >
                     <p>
                       <AiOutlineSetting />
@@ -185,7 +185,7 @@ function TodoContainer() {
               </div>
             </div>
             <div className="max-w-full md:max-w-[424px] mx-auto">
-              <div className={`bgMain  bg-[#285566]`}>
+              <div className={`bgMain  bg-[#105F7A]`}>
                 <CountdownTimer
                   referch={referch}
                   setReferch={setReferch}
