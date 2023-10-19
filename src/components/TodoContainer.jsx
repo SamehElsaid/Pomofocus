@@ -142,10 +142,10 @@ function TodoContainer() {
       ></PopUp>
       <div
         className={`
-        bg-[#2b687f]
+        bg-[#285566]
           App || transition-colors || duration-300  || ${
             !task ? "" : ""
-          } ||  min-h-screen py-[40px] || overflow-hidden`}
+          } ||  min-h-screen py-[15px] || overflow-hidden`}
       >
         <div className="w-fit || mx-auto || rounded-3xl || min-h-screen || bg-white || overflow-hidden || shadow-2xl">
           <div className="max-w-2xl || mx-auto">
@@ -155,7 +155,7 @@ function TodoContainer() {
               alt=""
             />
           </div>
-          <div className="container || bg-white  || pb-28">
+          <div className="container || bg-white">
             <div className="flex || relative || overflow-x-hidden || items-center || justify-between || pt-10 || pb-5 || mb-5 || border-b || border-[#0000001a] ">
               <div
                 style={{ transform: `translateX(-${100 - per}%)` }}
@@ -165,7 +165,7 @@ function TodoContainer() {
                 <ul className="flex || items-center || justify-between || gap-3">
                   <a
                     href="http://Vidaworkstation.com"
-                    className={`flex || items-center || gap-1 bgMain || bg-[#2b687f]/80 || select-none || cursor-pointer`}
+                    className={`flex || items-center || gap-1 bgMain || bg-[#285566] || select-none || cursor-pointer`}
                   >
                     <p>
                       <AiOutlineSetting />
@@ -174,7 +174,7 @@ function TodoContainer() {
                   </a>
                   <li
                     onClick={() => setSeting(true)}
-                    className={`flex || items-center || gap-1 bgMain || bg-[#2b687f]/80 || select-none || cursor-pointer`}
+                    className={`flex || items-center || gap-1 bgMain || bg-[#285566] || select-none || cursor-pointer`}
                   >
                     <p>
                       <AiOutlineSetting />
@@ -185,7 +185,7 @@ function TodoContainer() {
               </div>
             </div>
             <div className="max-w-full md:max-w-[424px] mx-auto">
-              <div className={`bgMain  bg-[#2b687f]/80`}>
+              <div className={`bgMain  bg-[#285566]`}>
                 <CountdownTimer
                   referch={referch}
                   setReferch={setReferch}
@@ -241,7 +241,7 @@ function TodoContainer() {
                           className="flex || hover:bg-gray-200 || pr-2 || pl-3 || py-3 || rounded-md || duration-300 || w-full || items-center || gap-1 || flex-wrap"
                         >
                           <BsCheckLg />
-                          <span>Clear act pomodoros</span>
+                          <span>Clear act Vida</span>
                         </button>
                         <button
                           onClick={() => {
@@ -325,6 +325,9 @@ function TodoContainer() {
                   </div>
                 </Zoom>
               </div>
+            </div>
+            <div className="text-sm || text-center || pb-5 || mt-16 || text-[#555]">
+              <p>All rights reserved to VIDAWORKSTATION</p>
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@ function Form({
         <Zoom appear left duration={500} opposite collapse when={err}>
           <p className="text-red-500 || text-sm">This Filed Is Required</p>
         </Zoom>
-        <h2>Est Pomodoros</h2>
+        <h2>Est Vida</h2>
         <div className="flex || items-center || gap-3 || my-5 || flex-wrap">
           <input
             type="number"

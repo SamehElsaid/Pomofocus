@@ -150,7 +150,7 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
           onClick={() => setStep("one")}
           className={`${step === "one" ? "btnTime" : ""}`}
         >
-          Pomodoro
+          Vida
         </button>
         <button
           onClick={() => setStep("two")}

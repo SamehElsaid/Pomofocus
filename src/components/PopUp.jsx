@@ -64,7 +64,7 @@ function PopUp({ open, setOpen, referch, setReferch }) {
           <p className="my-3">Time (minutes)</p>
           <div className="flex || items-center || justify-between || flex-wrap || gap-3">
             <div className="">
-              <p className="text-gray-400">Pomodoro</p>
+              <p className="text-gray-400">Vida</p>
               <input
                 type="number"
                 value={data.pom}
