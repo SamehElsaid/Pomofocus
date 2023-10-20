@@ -14,9 +14,19 @@
   src: url("/public/assents/font/TiltNeon-Regular.ttf");
   font-weight: 400;
 }
+@font-face {
+  font-family: "Tahoma";
+  src: url("/public/assents/font/Tahoma.ttf");
+  font-weight: 400;
+}
 body {
   font-family: "TiltNeon", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.Tahoma{
+  font-family: "Tahoma", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
 }
 .container {
   @apply px-[5px] lg:px-[30px] max-w-2xl;

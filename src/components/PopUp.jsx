@@ -12,7 +12,7 @@ function PopUp({ open, setOpen, referch, setReferch }) {
     short: 0,
     long: 0,
     alarmSound: "alert",
-    tickingSound: "Ticking",
+    tickingSound: "",
   });
   useEffect(() => {
     const time = JSON.parse(localStorage.getItem("time")) ?? false;
@@ -28,9 +28,13 @@ function PopUp({ open, setOpen, referch, setReferch }) {
   }, [referch]);
   const handleAlarmSoundChange = (e) => {
     const selectedValue = e.target.value;
-    audioRef.current.src = `./assents/sound/` + e.target.value + ".mp3";
-    audioRef.current.play().catch((error) => {});
-    setData((prevData) => ({ ...prevData, alarmSound: selectedValue }));
+    if (e.target.value !== "") {
+      audioRef.current.src = `./assents/sound/` + e.target.value + ".mp3";
+      audioRef.current.play().catch((error) => {});
+      setData((prevData) => ({ ...prevData, alarmSound: selectedValue }));
+    } else {
+      setData((prevData) => ({ ...prevData, alarmSound: "" }));
+    }
   };
 
   const handleTickingSoundChange = (e) => {
@@ -142,6 +146,7 @@ function PopUp({ open, setOpen, referch, setReferch }) {
               value={data.tickingSound}
               className="selectInput outline-none"
             >
+              <option value="">None</option>
               <option value="Ticking">Ticking</option>
               <option value="Tiktok">Tiktok</option>
               <option value="Electricity">Electricity</option>

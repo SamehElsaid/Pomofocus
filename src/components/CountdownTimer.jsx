@@ -3,9 +3,10 @@ import check1 from "../assets/img/check-1.ico";
 import check2 from "../assets/img/check-2.ico";
 import check3 from "../assets/img/check-3.ico";
 import { Zoom } from "react-reveal";
+import { BiSolidRightArrow } from "react-icons/bi";
 
 const CountdownTimer = ({ setPer, step, setStep, referch }) => {
-  const [initialTime, setInitialTime] = useState(0);
+  const [initialTime, setInitialTime] = useState(1);
   const [time, setTime] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false);
   const [loading, setloading] = useState(false);
@@ -13,7 +14,7 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
   const tickingSoundRef = useRef(null);
   const [timeVal, setTimeVal] = useState(false);
   const [playTickingSound, setPlayTickingSound] = useState(false);
-
+  const [showBtn, setShowBtn] = useState(false);
   useEffect(() => {
     const time = JSON.parse(localStorage.getItem("time")) ?? false;
     setTimeVal(time);
@@ -22,8 +23,8 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
         setTime(time?.pom * 60);
         setInitialTime(time?.pom * 60);
       } else {
-        setTime(30 * 60);
-        setInitialTime(30 * 60);
+        setTime(25 * 60);
+        setInitialTime(25 * 60);
       }
 
       setFavicon(check1);
@@ -61,7 +62,6 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
 
   useEffect(() => {
     let intervalId;
-
     if (isRunning && time > 0) {
       intervalId = setInterval(() => {
         setTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
@@ -80,12 +80,18 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
           audioRef.current.play().catch((error) => {});
         }
       }
+      // Show an alert when the timer reaches zero
       setTime(initialTime);
       setIsRunning(false);
+      setTimeout(() => {
+        window.alert("Time is up!");
+      }, 1000);
+      setShowBtn(true);
     }
 
     return () => clearInterval(intervalId);
-  }, [initialTime, isRunning, time, audioRef, playTickingSound]);
+  }, [initialTime, isRunning, time, audioRef, playTickingSound, step, setStep]);
+
   useEffect(() => {
     if (!playTickingSound) {
       tickingSoundRef.current.pause();
@@ -97,6 +103,7 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
     setIsRunning(true);
     setPlayTickingSound(true);
   };
+
   const pauseTimer = () => {
     setIsRunning(false);
     setPlayTickingSound(false);
@@ -134,6 +141,7 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
   useEffect(() => {
     setPer(0);
   }, [setPer, step]);
+
   useEffect(() => {
     const timeOur = setTimeout(() => {
       setloading(true);
@@ -142,24 +150,44 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
       clearInterval(timeOur);
     };
   }, []);
-
+  const changeBtn = () => {
+    setShowBtn(false);
+    if (step === "one") {
+      return setStep("two");
+    }
+    if (step === "two") {
+      return setStep("thi");
+    }
+    if (step === "thi") {
+      return setStep("one");
+    }
+  };
   return (
     <div className=" md:min-w-[400px]">
       <div className="flex selectBtn items-center justify-center">
         <button
-          onClick={() => setStep("one")}
+          onClick={() => {
+            setShowBtn(false);
+            setStep("one");
+          }}
           className={`${step === "one" ? "btnTime" : ""}`}
         >
-          Vida
+          Focus
         </button>
         <button
-          onClick={() => setStep("two")}
+          onClick={() => {
+            setShowBtn(false);
+            setStep("two");
+          }}
           className={`${step === "two" ? "btnTime" : ""}`}
         >
           Short Break
         </button>
         <button
-          onClick={() => setStep("thi")}
+          onClick={() => {
+            setShowBtn(false);
+            setStep("thi");
+          }}
           className={`${step === "thi" ? "btnTime" : ""}`}
         >
           Long Break
@@ -170,10 +198,26 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
       </div>
       <div className="pb-5">
         {!isRunning ? (
-          <div className="text-center">
+          <div className="text-center || flex || items-center || justify-between">
+            <button
+              className="btn flex items-center || justify-center || opacity-0 || invisible"
+              style={{ width: "fit-content" }}
+            >
+              <BiSolidRightArrow />
+            </button>
             <button className="btn" onClick={startTimer} disabled={isRunning}>
               Start
             </button>
+            <Zoom appear center duration={300} opposite collapse when={showBtn}>
+              <button
+                className="btn flex items-center || justify-center"
+                style={{ width: "fit-content" }}
+                onClick={changeBtn}
+                disabled={isRunning}
+              >
+                <BiSolidRightArrow />
+              </button>
+            </Zoom>
           </div>
         ) : (
           <>
@@ -203,6 +247,12 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
           </div>
         </Zoom>
       </div>
+
+      {/* <div className="text-center">
+            <button className="btn" onClick={resetTimer} disabled={isRunning}>
+              Reset
+            </button>
+          </div> */}
       <audio
         ref={audioRef}
         src={`${
