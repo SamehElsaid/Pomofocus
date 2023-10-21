@@ -3,7 +3,6 @@ import check1 from "../assets/img/check-1.ico";
 import check2 from "../assets/img/check-2.ico";
 import check3 from "../assets/img/check-3.ico";
 import { Zoom } from "react-reveal";
-import { BiSolidRightArrow } from "react-icons/bi";
 
 const CountdownTimer = ({ setPer, step, setStep, referch }) => {
   const [initialTime, setInitialTime] = useState(1);
@@ -150,16 +149,14 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
       clearInterval(timeOur);
     };
   }, []);
-  const changeBtn = () => {
+  const changeBtn = (val) => {
     setShowBtn(false);
-    if (step === "one") {
+   
+    if (val === "two") {
       return setStep("two");
     }
-    if (step === "two") {
+    if (val === "thi") {
       return setStep("thi");
-    }
-    if (step === "thi") {
-      return setStep("one");
     }
   };
   return (
@@ -193,31 +190,41 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
           Long Break
         </button>
       </div>
-      <div className="text-[60px] md:text-[120px] text-center">
+      <div
+        className={`${
+          showBtn ? "text-[30px] md:text-[60px]" : "text-[60px] md:text-[120px]"
+        }   text-center`}
+      >
         {formattedTime}
       </div>
       <div className="pb-5">
         {!isRunning ? (
-          <div className="text-center || flex || items-center || justify-between">
-            <button
-              className="btn flex items-center || justify-center || opacity-0 || invisible"
-              style={{ width: "fit-content" }}
-            >
-              <BiSolidRightArrow />
-            </button>
+          <div className="text-center || flex || flex-col || items-center">
+            <Zoom appear center duration={300} opposite collapse when={showBtn}>
+              <button
+                className="btn btnNew flex  items-center || justify-center"
+                onClick={() => {
+                  changeBtn("two");
+                }}
+                disabled={isRunning}
+              >
+                Short Break
+              </button>
+            </Zoom>
+            <Zoom appear center duration={300} opposite collapse when={showBtn}>
+              <button
+                className="btn btnNew flex  items-center || justify-center"
+                onClick={() => {
+                  changeBtn("thi");
+                }}
+                disabled={isRunning}
+              >
+                Long Break
+              </button>
+            </Zoom>
             <button className="btn" onClick={startTimer} disabled={isRunning}>
               Start
             </button>
-            <Zoom appear center duration={300} opposite collapse when={showBtn}>
-              <button
-                className="btn flex items-center || justify-center"
-                style={{ width: "fit-content" }}
-                onClick={changeBtn}
-                disabled={isRunning}
-              >
-                <BiSolidRightArrow />
-              </button>
-            </Zoom>
           </div>
         ) : (
           <>

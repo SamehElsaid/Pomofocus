@@ -18,7 +18,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import PopUp from "./PopUp";
 
 function TodoContainer() {
-  const [step, setStep] = useState("two");
+  const [step, setStep] = useState("one");
   const [task, setTask] = useState(false);
   const [todos, setTodos] = useState([]);
   const [per, setPer] = useState(0);
@@ -184,27 +184,6 @@ function TodoContainer() {
                 </ul>
               </div>
             </div>
-            <p
-              style={{ direction: "rtl" }}
-              className="text-lg  Tahoma text-[#105F7A] p-4 pb-2"
-            >
-              هي طريقة لإدارة الوقت طوّرها الإيطالي فرانشيسكو سيريلو أواخر
-              الثمانينات
-            </p>{" "}
-            <p
-              style={{ direction: "rtl" }}
-              className="text-base  Tahoma text-gray-700 px-4"
-            >
-              [1] وذلك عن طريق استخدام مؤقت لتقسيم وقت العمل إلى فترات زمنية مدة
-              الواحدة منها 25 دقيقة، ويفصل فيما بينها فترات راحة قصيرة.
-            </p>{" "}
-            <p
-              style={{ direction: "rtl" }}
-              className="text-base  Tahoma text-gray-700 px-4 ~~ pb-8 ~~ mt-2"
-            >
-              [2] يستند هذا الأسلوب على فكرة التوقف المتكرر من أجل الراحة التي
-              يمكن أن تحسن سرعة البديهة والتركيز
-            </p>
             <div className="max-w-full md:max-w-[424px] mx-auto">
               <div className={`bgMain  bg-[#105F7A]`}>
                 <CountdownTimer
@@ -351,35 +330,35 @@ function TodoContainer() {
               style={{ direction: "rtl" }}
               className="text-lg  Tahoma text-[#105F7A] p-4 pb-2"
             >
-              ولتطبيق هذه الطريقة عليك بالخمس خطوات الأساسية التالية:
+              ولتطبيق  خاصية بومودورو عليك بالخمس خطوات الأساسية التالية:
             </p>
             <p
               style={{ direction: "rtl" }}
-              className="text-base  Tahoma text-gray-700 px-4 ~~ pb-1"
+              className="text-sm  Tahoma text-gray-700 px-4 ~~ pb-1"
             >
               اختر العمل الذي تريد القيام به.
             </p>
             <p
               style={{ direction: "rtl" }}
-              className="text-base  Tahoma text-gray-700 px-4"
+              className="text-sm  Tahoma text-gray-700 px-4"
             >
               [1] اضبط المؤقت على 25 دقيقة (عادةً). 
             </p>{" "}
             <p
               style={{ direction: "rtl" }}
-              className="text-base  Tahoma text-gray-700 px-4"
+              className="text-sm  Tahoma text-gray-700 px-4"
             >
               [2] ابدأ في العمل حتى ينتهي المؤقت.
             </p>{" "}
             <p
               style={{ direction: "rtl" }}
-              className="text-base  Tahoma text-gray-700 px-4"
+              className="text-sm  Tahoma text-gray-700 px-4"
             >
               [3] خذ فترة راحة قصيرة لمدة 3-5 دقائق ثم عد مرةً أخرى للاستكمال.
             </p>{" "}
             <p
               style={{ direction: "rtl" }}
-              className="text-base  Tahoma text-gray-700 px-4 ~~ pb-8"
+              className="text-sm  Tahoma text-gray-700 px-4 ~~ pb-8"
             >
               [4] عند كل 4 بروموداري (فترات عمل) خذ راحة من 15 إلى 30 دقيقة.
             </p>
