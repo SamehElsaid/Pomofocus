@@ -3,6 +3,7 @@ import check1 from "../assets/img/check-1.ico";
 import check2 from "../assets/img/check-2.ico";
 import check3 from "../assets/img/check-3.ico";
 import { Zoom } from "react-reveal";
+import { toast } from "react-toastify";
 
 const CountdownTimer = ({ setPer, step, setStep, referch }) => {
   const [initialTime, setInitialTime] = useState(1);
@@ -83,7 +84,7 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
       setTime(initialTime);
       setIsRunning(false);
       setTimeout(() => {
-        window.alert("Time is up!");
+        toast.info("Time is up!");
       }, 1000);
       setShowBtn(true);
     }
@@ -151,7 +152,10 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
   }, []);
   const changeBtn = (val) => {
     setShowBtn(false);
-   
+
+    if (val === "one") {
+      return setStep("one");
+    }
     if (val === "two") {
       return setStep("two");
     }
@@ -204,11 +208,21 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
               <button
                 className="btn btnNew flex  items-center || justify-center"
                 onClick={() => {
-                  changeBtn("two");
+                  if (step === "one") {
+                    return changeBtn("two");
+                  }
+                  if (step === "two") {
+                    return changeBtn("one");
+                  }
+                  if (step === "thi") {
+                    return changeBtn("two");
+                  }
                 }}
                 disabled={isRunning}
               >
-                Short Break
+                {step === "one" && " Short Break"}
+                {step === "two" && " Focus"}
+                {step === "thi" && " Short Break"}
               </button>
             </Zoom>
             <Zoom appear center duration={300} opposite collapse when={showBtn}>
@@ -216,10 +230,16 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
                 className="btn btnNew flex  items-center || justify-center"
                 onClick={() => {
                   changeBtn("thi");
+                  if (step === "thi") {
+                    return changeBtn("one");
+                  }else{
+                    return changeBtn("thi")
+                  }
                 }}
                 disabled={isRunning}
               >
-                Long Break
+                {step === "thi" && " Focus"}
+                {step !== "thi" && " Long Break"}
               </button>
             </Zoom>
             <button className="btn" onClick={startTimer} disabled={isRunning}>
