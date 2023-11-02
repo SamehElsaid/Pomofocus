@@ -4,6 +4,7 @@ import check2 from "../assets/img/check-2.ico";
 import check3 from "../assets/img/check-3.ico";
 import { Zoom } from "react-reveal";
 import { toast } from "react-toastify";
+import ReactHowler from "react-howler";
 
 const CountdownTimer = ({ setPer, step, setStep, referch }) => {
   const [initialTime, setInitialTime] = useState(1);
@@ -15,6 +16,7 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
   const [timeVal, setTimeVal] = useState(false);
   const [playTickingSound, setPlayTickingSound] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
+  const [playSound, setplaySound] = useState(false);
   useEffect(() => {
     const time = JSON.parse(localStorage.getItem("time")) ?? false;
     setTimeVal(time);
@@ -23,8 +25,8 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
         setTime(time?.pom * 60);
         setInitialTime(time?.pom * 60);
       } else {
-        setTime(25 * 60);
-        setInitialTime(25 * 60);
+        setTime(25 * 1);
+        setInitialTime(25 * 1);
       }
 
       setFavicon(check1);
@@ -76,10 +78,9 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
 
     if (time === 0) {
       if (audioRef.current) {
-        if (audioRef.current) {
-          audioRef.current.play().catch((error) => {});
-        }
+        audioRef.current.play().catch((error) => {});
       }
+      setplaySound(true);
       // Show an alert when the timer reaches zero
       setTime(initialTime);
       setIsRunning(false);
@@ -89,9 +90,10 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
       setShowBtn(true);
     }
 
-    return () => clearInterval(intervalId);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [initialTime, isRunning, time, audioRef, playTickingSound, step, setStep]);
-
   useEffect(() => {
     if (!playTickingSound) {
       tickingSoundRef.current.pause();
@@ -102,11 +104,16 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
   const startTimer = () => {
     setIsRunning(true);
     setPlayTickingSound(true);
+    setplaySound(false);
+    setShowBtn(false);
+
   };
 
   const pauseTimer = () => {
     setIsRunning(false);
     setPlayTickingSound(false);
+    setShowBtn(false);
+
     if (tickingSoundRef.current) {
       tickingSoundRef.current.pause();
       tickingSoundRef.current.currentTime = 0;
@@ -232,8 +239,8 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
                   changeBtn("thi");
                   if (step === "thi") {
                     return changeBtn("one");
-                  }else{
-                    return changeBtn("thi")
+                  } else {
+                    return changeBtn("thi");
                   }
                 }}
                 disabled={isRunning}
@@ -274,13 +281,7 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
           </div>
         </Zoom>
       </div>
-
-      {/* <div className="text-center">
-            <button className="btn" onClick={resetTimer} disabled={isRunning}>
-              Reset
-            </button>
-          </div> */}
-      <audio
+      {/* <audio
         ref={audioRef}
         src={`${
           timeVal
@@ -290,6 +291,19 @@ const CountdownTimer = ({ setPer, step, setStep, referch }) => {
             : "./assents/sound/alert.mp3"
         }`}
         preload="auto"
+      /> */}
+      <ReactHowler
+        preload={true}
+        key={playSound ? 'play' : 'stop'}
+
+        src={`${
+          timeVal
+            ? timeVal.alarmSound === ""
+              ? "./assents/sound/alert.mp3"
+              : "./assents/sound/" + timeVal.alarmSound + ".mp3"
+            : "./assents/sound/alert.mp3"
+        }`}
+        playing={playSound}
       />
       <audio
         ref={tickingSoundRef}
